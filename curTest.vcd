@@ -1,5 +1,5 @@
 $date
-	Wed Jan 28 22:30:21 2026
+	Thu Jan 29 15:24:22 2026
 $end
 $version
 	Icarus Verilog
@@ -7,14 +7,21 @@ $end
 $timescale
 	1ps
 $end
-$scope module testprogramROM $end
-$var wire 8 ! prog [7:0] $end
-$var reg 4 " addr [3:0] $end
+$scope module ALUTestB $end
+$var wire 4 ! F [3:0] $end
+$var reg 4 " A [3:0] $end
+$var reg 4 # B [3:0] $end
+$var reg 1 $ Cn $end
+$var reg 1 % M $end
+$var reg 4 & sel [3:0] $end
 $scope module uut $end
-$var wire 4 # addr [3:0] $end
-$var reg 8 $ prog [7:0] $end
-$scope begin progBlock $end
-$upscope $end
+$var wire 4 ' A [3:0] $end
+$var wire 4 ( B [3:0] $end
+$var wire 1 $ Cn $end
+$var wire 1 % M $end
+$var wire 4 ) sel [3:0] $end
+$var reg 4 * F [3:0] $end
+$var reg 4 + Fin [3:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
@@ -23,29 +30,39 @@ $dumpall
 $end
 #0
 $dumpvars
-b11111111 $
+bx +
+bx *
+bx )
+bx (
+bx '
+bx &
+x%
+x$
 bx #
 bx "
-b11111111 !
+bx !
 $end
-#5000
-b1100010 !
-b1100010 $
-b11 "
+#2000
+b1011 !
+b1011 *
+b0 &
+b0 )
 b11 #
-#10000
-b10000010 !
-b10000010 $
-b0 "
-b0 #
-#15000
-b10100000 !
-b10100000 $
+b11 (
 b100 "
-b100 #
-#20000
-b100001 !
-b100001 $
-b10 "
-b10 #
-#25000
+b100 '
+1%
+#6000
+b1111 !
+b1111 *
+b100 &
+b100 )
+#10000
+b111 !
+b111 *
+b111 +
+1$
+b1 &
+b1 )
+0%
+#15000
