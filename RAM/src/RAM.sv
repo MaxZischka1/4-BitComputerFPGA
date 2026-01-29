@@ -4,7 +4,7 @@ module RAM
         input logic write_en,
         input logic [3:0] addr,
         input logic [3:0] dataIN,
-        output logic [15:0] dataOut
+        output logic [3:0] dataOut
     );
 
     logic [3:0] dataCells [15:0];

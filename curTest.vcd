@@ -1,0 +1,51 @@
+$date
+	Wed Jan 28 22:30:21 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module testprogramROM $end
+$var wire 8 ! prog [7:0] $end
+$var reg 4 " addr [3:0] $end
+$scope module uut $end
+$var wire 4 # addr [3:0] $end
+$var reg 8 $ prog [7:0] $end
+$scope begin progBlock $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b11111111 $
+bx #
+bx "
+b11111111 !
+$end
+#5000
+b1100010 !
+b1100010 $
+b11 "
+b11 #
+#10000
+b10000010 !
+b10000010 $
+b0 "
+b0 #
+#15000
+b10100000 !
+b10100000 $
+b100 "
+b100 #
+#20000
+b100001 !
+b100001 $
+b10 "
+b10 #
+#25000
