@@ -1,6 +1,6 @@
 module mux (
     input logic sel,
-    input logic [3:0] programROM,
+    input logic [3:0] programP,
     input logic [3:0] Ram,
     input logic enable,
     output logic [3:0] outBits
@@ -11,7 +11,7 @@ always_comb begin
         if(sel)
             outBits = Ram;
         else
-            outBits = programROM;
+            outBits = programP;
     end
     else outBits = 4'd0;
 end

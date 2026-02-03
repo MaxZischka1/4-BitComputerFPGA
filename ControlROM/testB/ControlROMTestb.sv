@@ -3,9 +3,10 @@ module ControlROMTestb;
     logic clk;
     logic [9:0] prog;
     logic [3:0] programCount;
+    logic cp;
 
 
-    PC pcInst(.clk(clk), .programCount(programCount));
+    PC pcInst(.clk(clk), .programCount(programCount), .cp(cp));
 
     ControlROM crInst(.addr(programCount), .prog(prog));
 

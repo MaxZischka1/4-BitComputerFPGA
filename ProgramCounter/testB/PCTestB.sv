@@ -3,9 +3,10 @@ module PCTestB;
 
     logic clk;
     logic [3:0] programCount;
+    logic cp;
 
 
-    PC dut (.clk(clk), .programCount(programCount));
+    PC dut (.clk(clk), .programCount(programCount), .cp(cp));
 
     initial begin
         clk = 0;

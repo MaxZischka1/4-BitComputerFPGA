@@ -12,7 +12,7 @@ module RAM
 
     always_comb begin
         if(CS) begin
-            if(write_en) begin
+            if(!write_en) begin
                 dataCells[addr] = dataIN;
             end
             else begin
