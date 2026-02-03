@@ -1,7 +1,7 @@
 module RAM
     (
-        input logic clk,
         input logic write_en,
+        input logic CS,
         input logic [3:0] addr,
         input logic [3:0] dataIN,
         output logic [3:0] dataOut
@@ -10,12 +10,14 @@ module RAM
     logic [3:0] dataCells [15:0];
 
 
-    always_ff @(posedge clk) begin
-        if(write_en) begin
-            dataCells[addr] <= dataIN;
-        end
-        else begin
-            dataOut <= dataCells[addr];
+    always_comb begin
+        if(CS) begin
+            if(write_en) begin
+                dataCells[addr] = dataIN;
+            end
+            else begin
+                dataOut = dataCells[addr];
+            end
         end
     end
 
