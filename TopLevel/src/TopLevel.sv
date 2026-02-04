@@ -1,5 +1,4 @@
 `include "ALU/src/ALU.sv"
-`include "Accumulator/src/Acc.sv"
 `include "ControlROM/src/ControlROM.sv"
 `include "ProgramCounter/src/PC.sv"
 `include "RAM/src/RAM.sv"
@@ -8,11 +7,13 @@
 `include "Addr/src/Addr.sv"
 
 module TopLevel(
-    input logic clk
+    input logic clk,
+    output logic [3:0] Acc
 );
 
 logic [3:0] programCount;
 logic cp;
+logic ABFlag;
 logic [7:0] progP;
 logic [9:0] progC;
 logic [3:0] muxOut;
@@ -21,7 +22,7 @@ logic [3:0] ramOut;
 logic [3:0] AccOut;
 logic [3:0] AluOut;
 
-PC Pcblock(.clk(clk), .programCount(programCount), .cp(cp));
+PC Pcblock(.clk(clk), .programCount(programCount), .cp(cp), .ABFlag(ABFlag), .progC(progC[0]), .progP(progP[3:0]));
 
 ProgramROM programBlock (.prog(progP), .addr(programCount));
 
@@ -35,7 +36,9 @@ RAM ramBlock(.write_en(progC[1]), .CS(1'd1), .addr(addrOut), .dataOut(ramOut), .
 
 mux muxblock (.programP(progP[3:0]), .sel(progC[9]), .Ram(ramOut), .enable(1'd1), .outBits(muxOut));
 
-ALU aluBlock (.sel(progP[7:4]), .A(AccOut), .B(muxOut), .M(progC[3]), .Cn(progC[8]), .F(AluOut));
+ALU aluBlock (.sel(progC[7:4]), .A(AccOut), .B(muxOut), .M(progC[3]), .Cn(progC[8]), .F(AluOut), .ABFlag(ABFlag));
+
+assign Acc = AccOut;
 
 
 endmodule

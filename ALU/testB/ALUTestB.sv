@@ -6,9 +6,10 @@ module ALUTestB;
     logic M;
     logic Cn;
     logic [3:0] F;
+    logic ABFlag;
 
     ALU uut (
-        .sel(sel), .A(A), .B(B), .M(M), .Cn(Cn), .F(F)
+        .sel(sel), .A(A), .B(B), .M(M), .Cn(Cn), .F(F), .ABFlag(ABFlag)
     );
 
     initial begin
@@ -26,7 +27,7 @@ module ALUTestB;
         sel = 1;
         Cn = 1;
         A = 4;
-        B = 3;
+        B = 4;
         #5
         $finish;
     end

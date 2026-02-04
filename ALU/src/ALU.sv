@@ -5,7 +5,8 @@ module ALU (
     input logic [3:0] B,
     input logic M,
     input logic Cn,
-    output logic [3:0] F
+    output logic [3:0] F,
+    output logic ABFlag
 );
 
     logic [3:0] Fin;
@@ -24,7 +25,7 @@ module ALU (
                 4'd9:F = ~(A ^ B);
                 4'd10:F = B;
                 4'd11:F = A & B;
-                4'd12:F = 4'd1;
+                4'd12:F = 4'd15;
                 4'd13:F = (A + ~B);
                 4'd14:F = A + B;
                 4'd15:F = A;
@@ -53,4 +54,5 @@ module ALU (
                 else F = Fin + 1;
             end
         end
+        assign ABFlag = (Fin[0] & Fin[1] & Fin[2] & Fin[3]);
 endmodule

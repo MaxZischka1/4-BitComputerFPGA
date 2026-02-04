@@ -4,7 +4,7 @@
         {
             "label": "Run Verilog Sim",
             "type": "shell",
-            "command": "iverilog -g2012 -o sim.vvp Addr/src/*.sv Addr/testB/*.sv && vvp sim.vvp && gtkwave curTest.vcd",
+            "command": "iverilog -g2012 -o sim.vvp TopLevel/src/*.sv TopLevel/testB/*.sv && vvp sim.vvp && gtkwave curTest.vcd",
             "group": {
                 "kind": "build",
                 "isDefault": true

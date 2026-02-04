@@ -9,7 +9,7 @@ always_comb begin : progBlock
         4'd1:prog = 8'h10;
         4'd2:prog = 8'h21;
         4'd3:prog = 8'h62;
-        4'd4:prog = 8'hA0;
+        4'd4:prog = 8'hC0;
         default: prog = 8'hFF;
     endcase
 end 
