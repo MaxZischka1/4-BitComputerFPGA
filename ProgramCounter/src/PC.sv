@@ -9,7 +9,7 @@ module PC(
     output logic cp
 );
 
-logic [19:0]counter = 0;
+logic [3:0]counter = 0;
 logic [3:0] programCountint = 0;
 
 always_ff @(posedge clk) begin : blockName
@@ -17,15 +17,20 @@ always_ff @(posedge clk) begin : blockName
         counter <= 0;
         programCountint <= progP;
     end else begin
-        if(counter == 20'hFFFFF)
+        if(counter == 4'hF)
             counter <= 0;
         else
-            counter = counter + 1;
-    
-        if(counter[1]) programCountint <= programCountint + 1;
+            counter <= counter + 1;
     end
 end
-assign cp = counter[1];
+always_ff @(posedge counter[3]) begin
+    if(programCountint<15) 
+    programCountint <= programCountint + 1;
+    else
+    programCountint <= 0;
+end
+
+assign cp = counter[3];
 assign programCount = programCountint;
 
 

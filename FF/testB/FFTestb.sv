@@ -1,6 +1,6 @@
 `include "ProgramCounter/src/PC.sv"
 `timescale 1ns/1ps
-module AddrTestb;
+module FFTestb;
     logic clk;
     logic en;
     logic cp;
@@ -10,7 +10,7 @@ module AddrTestb;
 
     PC Cinst (.clk(clk), .cp(cp), .programCount());
 
-    Addr Ainst(.clk(cp), .en(en), .dIn(dIn), .dOut(dOut));
+    FF Ainst(.clk(cp), .en(en), .dIn(dIn), .dOut(dOut));
 
     initial begin
         clk = 0;

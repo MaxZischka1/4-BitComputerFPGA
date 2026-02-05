@@ -10,9 +10,17 @@ module RAM
     logic [3:0] dataCells [15:0];
 
 
+    initial begin
+    integer i;
+        for (i = 0; i <= 15; i = i + 1) begin
+            dataCells[i] = 4'd0;
+        end
+    end
+
+
     always_comb begin
         if(CS) begin
-            if(!write_en) begin
+            if(~(write_en)) begin
                 dataCells[addr] = dataIN;
             end
             else begin

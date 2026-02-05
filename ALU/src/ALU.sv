@@ -9,50 +9,51 @@ module ALU (
     output logic ABFlag
 );
 
-    logic [3:0] Fin;
+    logic [3:0] Fin1, Fin2;
     always_comb begin
         if(M) begin
             case(sel)
-                4'd0:F = ~A;
-                4'd1:F = ~(A+B);
-                4'd2:F = ~A & B;
-                4'd3:F = 4'd0;
-                4'd4:F = ~(A&B);
-                4'd5:F = ~B;
-                4'd6:F = A ^ B;
-                4'd7:F = A & ~B;
-                4'd8:F = ~A + B;
-                4'd9:F = ~(A ^ B);
-                4'd10:F = B;
-                4'd11:F = A & B;
-                4'd12:F = 4'd15;
-                4'd13:F = (A + ~B);
-                4'd14:F = A + B;
-                4'd15:F = A;
+                4'd0:Fin1 = ~A;
+                4'd1:Fin1 = ~(A+B);
+                4'd2:Fin1 = ~A & B;
+                4'd3:Fin1 = 4'd0;
+                4'd4:Fin1 = ~(A&B);
+                4'd5:Fin1 = ~B;
+                4'd6:Fin1 = A ^ B;
+                4'd7:Fin1 = A & ~B;
+                4'd8:Fin1 = ~A + B;
+                4'd9:Fin1 = ~(A ^ B);
+                4'd10:Fin1 = B;
+                4'd11:Fin1 = A & B;
+                4'd12:Fin1 = 4'd15;
+                4'd13:Fin1 = (A + ~B);
+                4'd14:Fin1 = A + B;
+                4'd15:Fin1 = A;
             endcase
         end
         else begin
                 case(sel)
-                    4'd0:Fin = A;
-                    4'd1:Fin = (A+B);
-                    4'd2:Fin = A + ~B;
-                    4'd3:Fin = 4'd15;
-                    4'd4:Fin = A + (~A|B);
-                    4'd5:Fin = (A+B) + (~A|B);
-                    4'd6:Fin = (A-B)-1;
-                    4'd7:Fin = (A&~B)-1;
-                    4'd8:Fin = A + (A&B);
-                    4'd9:Fin = (A + B);
-                    4'd10:Fin = (A+ ~B) + (A&B);
-                    4'd11:Fin = (A&B)-1;
-                    4'd12:Fin = A + (A<<1);
-                    4'd13:Fin = (A+B) + A;
-                    4'd14:Fin = (A + ~B) + A;
-                    4'd15:Fin = A-1;
+                    4'd0:Fin2 = A;
+                    4'd1:Fin2 = (A+B);
+                    4'd2:Fin2 = A + ~B;
+                    4'd3:Fin2 = 4'd15;
+                    4'd4:Fin2 = A + (~A|B);
+                    4'd5:Fin2 = (A+B) + (~A|B);
+                    4'd6:Fin2 = (A-B)-1;
+                    4'd7:Fin2 = (A&~B)-1;
+                    4'd8:Fin2 = A + (A&B);
+                    4'd9:Fin2 = (A + B);
+                    4'd10:Fin2 = (A+ ~B) + (A&B);
+                    4'd11:Fin2 = (A&B)-1;
+                    4'd12:Fin2 = A + (A<<1);
+                    4'd13:Fin2 = (A+B) + A;
+                    4'd14:Fin2 = (A + ~B) + A;
+                    4'd15:Fin2 = A-1;
                 endcase
-                if(Cn) F = Fin;
-                else F = Fin + 1;
+                if(Cn) Fin1 = Fin2;
+                else Fin1 = Fin2 + 1;
             end
         end
-        assign ABFlag = (Fin[0] & Fin[1] & Fin[2] & Fin[3]);
+        assign F = Fin1;
+        assign ABFlag = (Fin1[0] & Fin1[1] & Fin1[2] & Fin1[3]);
 endmodule

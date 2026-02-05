@@ -20,7 +20,7 @@ always_comb begin : progBlock
         4'd9: progInt = 8'b10101110;
         // 4'd10: do something with I/O pins
         // 4'd11:
-        4'd12: progInt = 8'b00001111;
+        4'd12: progInt = 8'b01011111;
         4'd13: progInt = 8'b00001111;
         4'd14: progInt = 8'b11001111;
         4'd15: progInt = 8'b11001111;
