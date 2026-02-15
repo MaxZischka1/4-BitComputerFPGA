@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module ControlROM (
     input logic [3:0] addr,
     output logic [9:0] prog

@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module mux (
     input logic sel,
     input logic [3:0] programP,

@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 //try after to implement at logic level. Or pipelined
 module ALU (
     input logic [3:0] sel,
@@ -11,6 +12,8 @@ module ALU (
 
     logic [3:0] Fin1, Fin2;
     always_comb begin
+        Fin1 = 4'd0;
+        Fin2 = 4'd0;
         if(M) begin
             case(sel)
                 4'd0:Fin1 = ~A;
@@ -29,6 +32,7 @@ module ALU (
                 4'd13:Fin1 = (A + ~B);
                 4'd14:Fin1 = A + B;
                 4'd15:Fin1 = A;
+                default: Fin1 = A;
             endcase
         end
         else begin
@@ -49,6 +53,7 @@ module ALU (
                     4'd13:Fin2 = (A+B) + A;
                     4'd14:Fin2 = (A + ~B) + A;
                     4'd15:Fin2 = A-1;
+                    default: Fin2 = A-1;
                 endcase
                 if(Cn) Fin1 = Fin2;
                 else Fin1 = Fin2 + 1;

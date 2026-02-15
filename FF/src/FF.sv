@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module FF (
     input logic clk,
     input logic en,

@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module RAM
     (
         input logic write_en,
@@ -21,11 +22,17 @@ module RAM
     always_comb begin
         if(CS) begin
             if(~(write_en)) begin
-                dataCells[addr] = dataIN;
+                dataOut = 4'd0;
             end
             else begin
                 dataOut = dataCells[addr];
             end
+        end
+    end
+
+    always_latch begin
+        if (CS && ~write_en) begin
+            dataCells[addr] = dataIN;
         end
     end
 
