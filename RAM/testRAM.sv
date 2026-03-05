@@ -1,4 +1,4 @@
-`include "FF/src/FF.sv"
+`include "FF/FF.sv"
 `timescale 1ns / 1ps
 module testRAM;
 

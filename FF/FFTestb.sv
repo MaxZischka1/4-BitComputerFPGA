@@ -1,4 +1,4 @@
-`include "ProgramCounter/src/PC.sv"
+`include "ProgramCounter/PC.sv"
 `timescale 1ns/1ps
 module FFTestb;
     logic clk;

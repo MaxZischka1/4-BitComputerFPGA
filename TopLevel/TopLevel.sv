@@ -1,22 +1,22 @@
 `timescale 1ns/1ps
-`include "ALU/src/ALU.sv"
-`include "ControlROM/src/ControlROM.sv"
-`include "ProgramCounter/src/PC.sv"
-`include "RAM/src/RAM.sv"
-`include "MUX/src/mux.sv"
-`include "ProgramROM/src/ProgramROM.sv"
-`include "FF/src/FF.sv"
+`include "ALU/ALU.sv"
+`include "ControlROM/ControlROM.sv"
+`include "ProgramCounter/PC.sv"
+`include "RAM/RAM.sv"
+`include "MUX/mux.sv"
+`include "ProgramROM/ProgramROM.sv"
+`include "FF/FF.sv"
 
 module TopLevel(
     input logic clk,
     output logic [3:0] Acc,
     output logic [3:0] programCountOut,
-    output logic [7:0] progPOut
+    output logic [7:0] progPOut,
     // output logic [9:0] progCOut,
     // output logic [3:0] muxOutOut,
     // output logic [3:0] addrOutOut,
     // output logic [3:0] ramOutOut
-    // output logic [3:0] AluOutOut
+    output logic [3:0] AluOutOut
     // output logic cpOut,
     // output logic ABFlagOut,
     // output logic PCc0,
@@ -54,7 +54,7 @@ ALU aluBlock (.sel(progC[7:4]), .A(AccOut), .B(muxOut), .M(progC[3]), .Cn(progC[
 assign Acc = AccOut;
 //assign ramOutOut = ramOut;
 assign programCountOut = programCount;
-// assign AluOutOut = AluOut;
+assign AluOutOut = AluOut;
 assign progPOut = progP;
 // assign muxOutOut = muxOut;
 //assign addrOutOut = addrOut;
@@ -70,8 +70,5 @@ assign progPOut = progP;
 // assign S3c7 = progC[7];
 // assign Cnc8 = progC[8];
 // assign Selc9 = progC[9];
-
-
-
 
 endmodule

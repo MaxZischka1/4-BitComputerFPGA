@@ -6,7 +6,7 @@ module TopLevelTestB;
     // logic cpOut;
     logic [3:0] Acc;
     logic [3:0] programCountOut;
-    // logic [3:0] AluOutOut;
+    logic [3:0] AluOutOut;
     // logic [9:0] progCOut;
     logic [7:0] progPOut;
     logic [3:0] ramOutOut;
@@ -24,7 +24,7 @@ module TopLevelTestB;
     // logic Selc9;
 
     TopLevel uut (.clk(clk), .Acc(Acc), .programCountOut(programCountOut), 
-    .progPOut(progPOut)
+    .progPOut(progPOut), .AluOutOut(AluOutOut)
     );
 
     initial begin
@@ -38,6 +38,4 @@ module TopLevelTestB;
         $dumpfile("curTest.vcd");
         $dumpvars(0,TopLevelTestB);
         #10000
-        $finish;
-    end
-endmodule
+        $finis

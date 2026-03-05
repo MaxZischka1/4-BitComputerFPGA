@@ -13,6 +13,7 @@ logic [3:0] programCountint = 0;
 
 always_ff @(posedge clk) begin : blockName
     if(progC && ABFlag) begin
+        programCountint <= progP;
         counter <= 0;
     end else begin
         if(counter == 4'hF)
@@ -22,16 +23,12 @@ always_ff @(posedge clk) begin : blockName
     end
 end
 always_ff @(posedge counter[3]) begin
-    if(progC && ABFlag) begin
-        programCountint <= progP;
-    end
-        else begin
-            if(programCountint<15) 
+        if(programCountint<15) 
             programCountint <= programCountint + 1;
-            else
+        else
             programCountint <= 0;
         end
-end
+
 
 assign cp = counter[3];
 assign programCount = programCountint;
